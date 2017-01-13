@@ -1,5 +1,12 @@
 # Demistifying Bundling
 
+## TODOs
+* implement very naive bundling
+* implement very naive ES6 bundling
+* understand Rollup
+* understand Browserify
+* understand Webpack
+
 ## Intro
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).
 We are going to focus on what happens behind the scenes/under the hood.
