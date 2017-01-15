@@ -1,3 +1,3 @@
 module.exports = {
-    getRequireDependencies: require("./get-require-depdencies")
+    getRequireDependencies: require("./get-require-dependencies")
 };
