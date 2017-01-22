@@ -11,6 +11,8 @@
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).
 We are going to focus on what happens behind the scenes/under the hood.
 
+Big words: statically analyzable, tree-shaking (what do they mean?) why the `export` syntax?
+
 ### How we get from here to here?
 global+jquery => TS + Angular / React + Flow + Modular...
 Let's get our hands a bit dirty...
@@ -18,6 +20,9 @@ Let's get our hands a bit dirty...
 ## Naive implementation
 
 ### ES5 (Browserify / Webpack)
+* module deps (~ 500loc)
+    * todo: how it works?
+* get the dependencies defined in one file: 
 
 ### ES6 (webpack)
 Why ES6: statically analyzable ==> tree shaking

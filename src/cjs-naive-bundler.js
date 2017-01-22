@@ -1,25 +1,13 @@
+const path = require('path');
 const fs = require("fs");
-const path = require("path");
+var mdeps = require('module-deps');
+var JSONStream = require('JSONStream');
+const t = require('through2');
 
-const utils = require("./util/index");
+var md = mdeps();
+md
+    .pipe(JSONStream.stringify())
+    // todo: transform files...
+    .pipe(fs.createWriteStream("bundle.js"));
 
-function bundle(entry, output) {
-    // todo
-    const content = fs.readFileSync(path.resolve(entry), "utf-8");
-    let dependencies = [
-
-        
-    ];
-
-    // normalize locally to entry folder...
-
-    // do recursively
-
-    // add a mapper
-
-    dependencies = dependencies.concat(utils.getRequireDependencies(content));
-}
-
-bundle("../example/calculator-cjs/index.js");
-
-module.exports = bundle;
+md.end({ file: path.join(__dirname, '../example/calculator-cjs/index.js')});
