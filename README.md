@@ -2,12 +2,12 @@
 
 ## TODOs
 * OK - understand Browserify
-* implement very naive bundling
-    * https://github.com/substack/stream-handbook
-    * `finish cjs-naive-bundler.js`
-* understand Rollup
+* OK - implement very naive bundling
+    * OK - https://github.com/substack/stream-handbook
+    * OK - `finish cjs-naive-bundler.js`
 * understand Webpack
-* implement very naive ES6 bundling
+* understand Rollup
+* try to implement very naive ES6 bundling (or at least the steps)
 
 ## Intro
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).
