@@ -3,11 +3,12 @@ const fs = require("fs");
 var mdeps = require('module-deps');
 var JSONStream = require('JSONStream');
 const through = require('through');
+const concat = require("concat-stream");
 
 /**
  * Get the entry file and 
  * 
- * @returns [{id: string, source: string, deps: {}, file: string, [entry]: boolean }]
+ * @returns Promise<[{id: string, source: string, deps: {}, file: string, [entry]: boolean }]>
  * 
  * @example
  * [
@@ -28,23 +29,8 @@ const through = require('through');
  */
 function getModuleDependencies(entry) {
     return new Promise(resolve => {
-        const dependencies = [];
         const md = mdeps();
-        md.pipe(through(
-            function (data) {
-                dependencies.push(data);
-                this.queue(data);
-            },
-            function () { //optional
-                const map = 
-                resolve(dependencies);
-                this.queue(null);
-            })
-        )
-        md.on("tranform", (tr, file) => {
-            console.log(tr, file);
-            return file;
-        });
+        md.pipe(concat(resolve))
         md.end({ file: entry });
     });
 }
