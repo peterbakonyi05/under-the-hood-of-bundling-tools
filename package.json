@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape src/**/*.spec.js"
+    "test": "tape src/**/*.spec.js",
+    "build:cjs": "node src/cjs-naive-bundler -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "module-deps": "^4.0.8",
     "tape": "^4.6.3",
     "through2": "^2.0.3"
+  },
+  "dependencies": {
+    "yargs": "^6.6.0"
   }
 }

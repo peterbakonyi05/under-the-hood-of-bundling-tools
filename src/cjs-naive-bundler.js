@@ -4,6 +4,8 @@ const fsp = require("fs-promise");
 const mdeps = require('module-deps');
 const concat = require("concat-stream");
 
+const args = require("./args");
+
 /**
  * @example
  * [
@@ -22,26 +24,26 @@ const concat = require("concat-stream");
  *  }
  * ]
  */
-function parseModules(entry) {
-    return new Promise(resolve => {
-        const md = mdeps();
-        md.pipe(concat(resolve))
-        md.end({ file: entry });
-    });
+function getModuleDependencies(entry) {
+	return new Promise(resolve => {
+		const md = mdeps();
+		md.pipe(concat(resolve))
+		md.end({ file: entry });
+	});
 }
 
-function addBoilerPlate(parsedModules) {
-    const entryIds = [];
-    let modules = "{";
-    _.forEach(parsedModules, m => {
-        if (m.entry) {
-            entryIds.push(m.id);
-        }
-        modules += `${JSON.stringify(m.id)}: [function (require, module, exports) { ${m.source} }, ${JSON.stringify(m.deps)}],`;
-    });
-    modules = modules.slice(0, -1) + "}";
+function convertForBrowser(parsedModules) {
+	const entryIds = [];
+	let modules = "{";
+	_.forEach(parsedModules, m => {
+		if (m.entry) {
+			entryIds.push(m.id);
+		}
+		modules += `${JSON.stringify(m.id)}: [function (require, module, exports) { ${m.source} }, ${JSON.stringify(m.deps)}],`;
+	});
+	modules = modules.replace(/.$/, "}");
 
-    return `(function (allModules, entryIds) {
+	return `(function (allModules, entryIds) {
 	var installedModules = {};
 	function require(moduleId, dependencies) {
 		if (!installedModules[moduleId]) {
@@ -66,9 +68,9 @@ function addBoilerPlate(parsedModules) {
 }
 
 function bundle(entry, output) {
-    return parseModules(entry)
-        .then(addBoilerPlate)
-        .then(data => fsp.writeFile(output, data));
+	return getModuleDependencies(entry)
+		.then(convertForBrowser)
+		.then(data => fsp.writeFile(output, data));
 }
 
-bundle(path.join(__dirname, '../example/calculator-cjs/index.js'), path.join(__dirname, '../output/cjs-custom/bundle.js'));
+bundle(args.entry, args.output);
