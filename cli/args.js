@@ -1,7 +1,8 @@
 const path = require("path");
 const yargs = require("yargs");
 
-const argv = yargs.alias("e", "entry")
+const argv = yargs
+	.alias("e", "entry")
 	.alias("o", "output")
 	.argv
 
