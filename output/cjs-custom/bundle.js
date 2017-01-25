@@ -20,15 +20,16 @@
 	}
 	entryIds.forEach(function (entryId) { require(entryId); });
 } ({
-	"C:\\Github\\demystify-bundling\\example\\calculator-cjs\\calculator.js": [function (require, module, exports) {
+	1: [function (require, module, exports) {
 	module.exports = {
 		add: function (a, b) {
 			return a + b;
 		}
 	};
-	}, {}], "C:\\Github\\demystify-bundling\\example\\calculator-cjs\\index.js": [function (require, module, exports) {
+	}, {}],
+	2: [function (require, module, exports) {
 		const calculator = require("./calculator");
 
 		console.log(calculator.add(1, 2));
-	}, { "./calculator": "C:\\Github\\demystify-bundling\\example\\calculator-cjs\\calculator.js" }]
-}, ["C:\\Github\\demystify-bundling\\example\\calculator-cjs\\index.js"]))
+	}, { "./calculator": 1 }]
+}, [2]))
