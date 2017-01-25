@@ -5,9 +5,12 @@
 * OK - implement very naive bundling
     * OK - https://github.com/substack/stream-handbook
     * OK - `finish cjs-naive-bundler.js`
+* implement very naive ES6 bundling using babel or TS or both (or at least the steps)
+    * understand ASTs
+    * understand `babel-core` AST
+    * undrstand Typescript compiler (https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API)
 * understand Webpack
 * understand Rollup
-* try to implement very naive ES6 bundling (or at least the steps)
 
 ## Intro
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).
@@ -28,6 +31,31 @@ Let's get our hands a bit dirty...
 
 ### ES6 (webpack)
 Why ES6: statically analyzable ==> tree shaking
+
+### Note on ASTs
+* terms
+    * lexical analysis (tokenization): lexer forms the first phase of a compiler
+    * syntactic analysis (parsing): the process of analysing a string of symbols
+        * parser takes input data and builds a data structure (like parse tree/concrete syntax tree)
+    * AST is the result of simplifying the concrete syntax tree down to the things that actually needed to represent the meaning of the program
+* abstract syntax trees are data structures (trees to be exact) that represents the syntactical structure of your source code (https://medium.com/@jerrymao/what-is-an-abstract-syntax-tree-and-why-do-i-care-c7882db8edc8#.2ng9c676g)
+* by parsing source code into an AST, it is much easier to perform static analysis
+
+#### Creating AST
+* https://medium.com/@jotadeveloper/abstract-syntax-trees-on-javascript-534e33361fc7#.671blsgek
+    * https://github.com/estree/estree: the first AST common specification
+    * fully compatible parsers with the specs 
+        * https://github.com/jquery/esprima (most pupular, Istanbul is also using this one)
+        * https://github.com/ternjs/acorn (Acorn claims to be faster, smaller and prettier than Esprima)
+
+#### Modifying
+* Once we have our code in AST mode, we can loop the whole tree an change whatever we want
+    * traverse: https://github.com/estools/estraverse
+    * scope analyzer: https://github.com/estools/escope
+    * recursive traversing: https://github.com/estools/esrecurse
+
+#### Converting back to JS
+* https://github.com/estools/escodegen
 
 ### ES6 (Rollup)
 
