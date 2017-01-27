@@ -47,6 +47,9 @@ Why ES6: statically analyzable ==> tree shaking
     * fully compatible parsers with the specs 
         * https://github.com/jquery/esprima (most pupular, Istanbul is also using this one)
         * https://github.com/ternjs/acorn (Acorn claims to be faster, smaller and prettier than Esprima)
+        * https://github.com/babel/babylon (Babels parser)
+        * TODO: TypeScript parser?
+        * all the players perf comparison: http://esprima.org/test/compare.html, https://astexplorer.net/
 
 #### Modifying
 * Once we have our code in AST mode, we can loop the whole tree an change whatever we want

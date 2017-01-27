@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:cjs": "node cli/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js"
+    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +16,8 @@
     "module-deps": "^4.0.8"
   },
   "dependencies": {
+    "acorn": "^4.0.4",
+    "escodegen": "^1.8.1",
     "yargs": "^6.6.0"
   }
 }
