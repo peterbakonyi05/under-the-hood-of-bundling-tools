@@ -4,20 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js"
+    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js",
+    "build:es2015": "node bin/es2015-bundle -e example/calculator-es2015/index.js -o output/es2015-custom/bundle.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "acorn": "^4.0.4",
     "fs-promise": "^1.0.0",
     "concat-stream": "^1.6.0",
-    "lodash": "^4.17.4",
-    "module-deps": "^4.0.8"
-  },
-  "dependencies": {
-    "acorn": "^4.0.4",
     "escodegen": "^1.8.1",
+    "estraverse": "^4.2.0",
+    "lodash": "^4.17.4",
+    "module-deps": "^4.0.8",
     "yargs": "^6.6.0"
   }
 }

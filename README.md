@@ -56,11 +56,28 @@ Why ES6: statically analyzable ==> tree shaking
     * traverse: https://github.com/estools/estraverse
     * scope analyzer: https://github.com/estools/escope
     * recursive traversing: https://github.com/estools/esrecurse
+* Example
 
 #### Converting back to JS
 * https://github.com/estools/escodegen
 
-### ES6 (Rollup)
+### ES6 module loaders (Rollup/Webpack 2)
+Webpack1 and Browserify cannot load ES6 modules (it needs to be transpiled to CJS module format by Babel or TS Compiler)
+
+```js
+// type: ImportDeclaration
+import * as _ from "lodash";
+
+// type: ExportNamedDeclaration
+export function a() {
+	return 1;
+}
+
+// type: ExportDefaultDeclaration
+export default class B {
+}
+
+```
 
 ## Architecture
 

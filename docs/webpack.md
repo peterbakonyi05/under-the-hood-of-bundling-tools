@@ -50,7 +50,8 @@ class Parser {
 		});
 		this.state = initialState;
 		this.applyPlugins(ast);
-		this.walkStatements();
+		this.walkStatements(); // parses imports and exports
+		return this.state;
 	}
 }
 ```
