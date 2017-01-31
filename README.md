@@ -9,8 +9,8 @@
     * understand ASTs
     * understand `babel-core` AST
     * undrstand Typescript compiler (https://github.com/Microsoft/TypeScript/wiki/Using-the-Compiler-API)
-* understand Webpack
-* understand Rollup
+* [ongoing] - understand Webpack
+* [ongoing] - understand Rollup
 
 ## Intro
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).
@@ -18,19 +18,31 @@ We are going to focus on what happens behind the scenes/under the hood.
 
 Big words: statically analyzable, tree-shaking (what do they mean?) why the `export` syntax?
 
+
 ### How we get from here to here?
 global+jquery => TS + Angular / React + Flow + Modular...
+todo: explain CommonJS and ES2015/ES6 module format
+
 Let's get our hands a bit dirty...
 
-## Naive implementation
+## ES5+CJS implementation (Browserify / Webpack)
+* steps of the implementation
+* todo: check the implementation of `module-deps` plugin to reference it here
+* note: this is exactly how Browserify works. (It doesn't support ES6 module format out of the box)
+* the generated output is also very similar to the webpack output (todo: check webpack output one more time)
 
-### ES5 (Browserify / Webpack)
-* module deps (~ 500loc)
-    * todo: how it works?
-* get the dependencies defined in one file: 
+## Next evolutionary step: Temporary ES6 solutions
+* using another tool as a plugin to transpile ES6 module format to CommonJS and then do the bundling
+* I will skip this because the bundling tools now support ES6 modules and that is superior because that is part of the language
+* using TypeScript or Babel now: you should leave the module format as ES6/ES2015 (todo: link Babel and tsconfig settings here)
 
-### ES6 (webpack)
+## ES6 (webpack/rollup)
 Why ES6: statically analyzable ==> tree shaking
+Problem: `import`, `export` are built in keywords now, we cannot provide a runtime implementation.
+To make it work in the the browser we need to transform the code. It means the bundler needs to understand the code.
+How do we do that?
+
+## AST
 
 ### Note on ASTs
 * terms
@@ -51,19 +63,6 @@ Why ES6: statically analyzable ==> tree shaking
         * TODO: TypeScript parser?
         * all the players perf comparison: http://esprima.org/test/compare.html, https://astexplorer.net/
 
-#### Modifying
-* Once we have our code in AST mode, we can loop the whole tree an change whatever we want
-    * traverse: https://github.com/estools/estraverse
-    * scope analyzer: https://github.com/estools/escope
-    * recursive traversing: https://github.com/estools/esrecurse
-* Example
-
-#### Converting back to JS
-* https://github.com/estools/escodegen
-
-### ES6 module loaders (Rollup/Webpack 2)
-Webpack1 and Browserify cannot load ES6 modules (it needs to be transpiled to CJS module format by Babel or TS Compiler)
-
 ```js
 // type: ImportDeclaration
 import * as _ from "lodash";
@@ -79,23 +78,24 @@ export default class B {
 
 ```
 
-## Architecture
+#### Modifying
+* Once we have our code in AST mode, we can loop the whole tree an change whatever we want
+    * traverse: https://github.com/estools/estraverse
+    * scope analyzer: https://github.com/estools/escope
+    * recursive traversing: https://github.com/estools/esrecurse
+* Example
 
-### Config
+#### Converting back to JS
+* https://github.com/estools/escodegen
 
-### Plugins (minify...)
+### ES6 module loaders (Rollup/Webpack 2)
+* Building blocks of the implementation (take rollup as a reference because it is much cleaner and more compact)
+* todo: show webpack and rollup output
 
-### Loaders (Babel, TS)
 
-### NPM Linking
-
-### HMR
-
-## Interesting
-Some numbers/performance
-Big projects, lot of dependency, TS file
-* Initial bundle: 24sec
-* Increment: 2-8sec
+## Advanced topics
+* HMR
+* todo: find another interesting topic
 
 ## Frameworks, CLIs
 Angular-cli (webpack)
@@ -115,4 +115,5 @@ Collection of sources and articles on how to do it for your project.
 * https://www.youtube.com/watch?v=admLV6V2eDg&list=PLUzuI4zq53eHbqKe4Dcf6YaSL-CXscDv5&index=3
 
 ## Summary
-If you understand the basic concepts and architecture, it is easy to use any of the bundling tools, even if it is wrapped inside a CLI.
+If you understand the basic concepts and architecture, it is easier to configure and use any of the bundling tools.
+Especially when it comes to debugging.
