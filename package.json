@@ -18,6 +18,7 @@
     "estraverse": "^4.2.0",
     "lodash": "^4.17.4",
     "module-deps": "^4.0.8",
+    "rollup": "^0.41.4",
     "yargs": "^6.6.0"
   }
 }
