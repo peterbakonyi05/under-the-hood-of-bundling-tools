@@ -1,3 +1,4 @@
+// index.js
 const calculator = require("./calculator");
-
-console.log(calculator.add(1, 2));
+const result = calculator.add(1, 2);
+console.log(result);
