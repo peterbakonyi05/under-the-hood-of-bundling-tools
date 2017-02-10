@@ -5,12 +5,9 @@
 			cache[id] = {
 				exports: {}
 			};
-			modules[id][0].call(
+			modules[id].call(
 				cache[id].exports,
-				function (dependency) {
-					var dependencid = modules[id][1][dependency];
-					return require(dependencid);
-				},
+				require,
 				cache[id],
 				cache[id].exports
 			);
@@ -20,16 +17,16 @@
 	}
 	entryIds.forEach(require);
 }({
-	1: [function (require, module, exports) {
+	1: function (require, module, exports) { // calculator.js
 		module.exports = {
 			add: function (a, b) {
 				return a + b;
 			}
 		};
-	}, {}],
-	2: [function (require, module, exports) {
-		const calculator = require("./calculator");
+	},
+	2: function (require, module, exports) { // index.js
+		const calculator = require(1);
 		const result = calculator.add(1, 2);
 		console.log(result);
-	}, { "./calculator": 1 }]
+	}
 }, [2]))
