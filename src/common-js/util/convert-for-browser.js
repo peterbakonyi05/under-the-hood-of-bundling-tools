@@ -12,24 +12,24 @@ module.exports = function convertForBrowser(parsedModules) {
 	modules = modules.replace(/.$/, "}");
 
 	return `(function (allModules, entryIds) {
-	var installedModules = {};
-	function require(moduleId, dependencies) {
-		if (!installedModules[moduleId]) {
-			installedModules[moduleId] = {
+	var cache = {};
+	function require(id, dependencies) {
+		if (!cache[id]) {
+			cache[id] = {
 				exports: {}
 			};
-			allModules[moduleId][0].call(
-				installedModules[moduleId].exports,
+			allModules[id][0].call(
+				cache[id].exports,
 				function (dependency) {
-					var dependencModuleId = allModules[moduleId][1][dependency];
-					return require(dependencModuleId);
+					var dependencid = allModules[id][1][dependency];
+					return require(dependencid);
 				},
-				installedModules[moduleId],
-				installedModules[moduleId].exports
+				cache[id],
+				cache[id].exports
 			);
 		}
 
-		return installedModules[moduleId].exports;
+		return cache[id].exports;
 	}
 	entryIds.forEach(function(entryId) { require(entryId); });
 }(${modules}, ${JSON.stringify(entryIds)}))`;

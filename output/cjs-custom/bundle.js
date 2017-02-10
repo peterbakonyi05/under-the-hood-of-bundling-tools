@@ -1,35 +1,41 @@
-(function (allModules, entryIds) {
-	var installedModules = {};
-	function require(moduleId, dependencies) {
-		if (!installedModules[moduleId]) {
-			installedModules[moduleId] = {
-				exports: {}
-			};
-			allModules[moduleId][0].call(
-				installedModules[moduleId].exports,
-				function (dependency) {
-					var dependencModuleId = allModules[moduleId][1][dependency];
-					return require(dependencModuleId);
+// all modules
+function bootstrap(modules, entryIds) {
+	var cache = {};
+	function require(id) {
+		if (!cache[id]) {
+			cache[id] = { exports: {} };
+			modules[id][0].call(
+				cache[id].exports,
+				function (dep) {
+					var depId = modules[id][1][dep];
+					return require(depId);
 				},
-				installedModules[moduleId],
-				installedModules[moduleId].exports
+				cache[id],
+				cache[id].exports
 			);
 		}
 
-		return installedModules[moduleId].exports;
+		return cache[id].exports;
 	}
-	entryIds.forEach(function (entryId) { require(entryId); });
-} ({
-	1: [function (require, module, exports) {
-	module.exports = {
-		add: function (a, b) {
-			return a + b;
-		}
-	};
-	}, {}],
-	2: [function (require, module, exports) {
-		const calculator = require("./calculator");
+	entryIds.forEach(require);
+}
 
-		console.log(calculator.add(1, 2));
-	}, { "./calculator": 1 }]
-}, [2]))
+bootstrap({
+	1: [
+		function (require, module, exports) {
+			module.exports = {
+				add: function (a, b) {
+					return a + b;
+				}
+			};
+		},
+		{}
+	],
+	2: [
+		function (require, module, exports) {
+			const calculator = require("./calculator");
+			console.log(calculator.add(1, 2));
+		},
+		{ "./calculator": 1 }
+	]
+}, [2]);
