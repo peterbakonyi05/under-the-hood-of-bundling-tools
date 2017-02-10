@@ -5,20 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "tape src/**/*.spec.js",
-    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-custom/bundle.js",
-    "build:es2015": "node bin/es2015-bundle -e example/calculator-es2015/index.js -o output/es2015-custom/bundle.js"
+    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-bundle.js",
+    "build:cjs:browserify": "browserify example/calculator-cjs/index.js > output/browserify-cjs-bundle.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "acorn": "^4.0.4",
+    "browserify": "^14.0.0",
     "concat-stream": "^1.6.0",
     "escodegen": "^1.8.1",
     "estraverse": "^4.2.0",
     "fs-promise": "^1.0.0",
     "lodash": "^4.17.4",
     "module-deps": "^4.0.8",
+    "node-browserify": "^1.0.0",
     "rollup": "^0.41.4",
     "tape": "^4.6.3",
     "yargs": "^6.6.0"

@@ -7,6 +7,3 @@ module.exports = function cjsBundle(entry, output) {
 		.then(convertForBrowser)
 		.then(data => fsp.writeFile(output, data));
 }
-
-// example
-cjsBundle("src/indexjs", "output/bundle.js");

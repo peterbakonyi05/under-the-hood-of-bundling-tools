@@ -11,17 +11,17 @@ module.exports = function convertForBrowser(parsedModules) {
 	});
 	modules = modules.replace(/.$/, "}");
 
-	return `(function (allModules, entryIds) {
+	return `(function (modules, entryIds) {
 	var cache = {};
 	function require(id, dependencies) {
 		if (!cache[id]) {
 			cache[id] = {
 				exports: {}
 			};
-			allModules[id][0].call(
+			modules[id][0].call(
 				cache[id].exports,
 				function (dependency) {
-					var dependencid = allModules[id][1][dependency];
+					var dependencid = modules[id][1][dependency];
 					return require(dependencid);
 				},
 				cache[id],
@@ -31,6 +31,6 @@ module.exports = function convertForBrowser(parsedModules) {
 
 		return cache[id].exports;
 	}
-	entryIds.forEach(function(entryId) { require(entryId); });
+	entryIds.forEach(require);
 }(${modules}, ${JSON.stringify(entryIds)}))`;
 }
