@@ -6,7 +6,9 @@
   "scripts": {
     "test": "tape src/**/*.spec.js",
     "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-bundle.js",
-    "build:cjs:browserify": "browserify example/calculator-cjs/index.js > output/browserify-cjs-bundle.js"
+    "build:cjs:browserify": "browserify example/calculator-cjs/index.js > output/browserify-cjs-bundle.js",
+    "build:cjs:webpack": "webpack --entry ./example/calculator-cjs/index.js --output-filename ./output/webpack-cjs-bundle.js",
+    "build:es2015:webpack": "webpack --entry ./example/calculator-es2015/index.js --output-filename ./output/webpack-es2015-bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +25,7 @@
     "node-browserify": "^1.0.0",
     "rollup": "^0.41.4",
     "tape": "^4.6.3",
+    "webpack": "^2.2.1",
     "yargs": "^6.6.0"
   }
 }

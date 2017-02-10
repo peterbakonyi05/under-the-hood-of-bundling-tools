@@ -70,6 +70,7 @@
 /* 0 */
 /***/ (function(module, exports) {
 
+// calculator.js
 module.exports = {
 	add: function (a, b) {
 		return a + b;
@@ -80,9 +81,10 @@ module.exports = {
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var calculator = __webpack_require__(0);
-
-console.log(calculator.add(1, 2));
+// index.js
+const calculator = __webpack_require__(0);
+const result = calculator.add(1, 2);
+console.log(result);
 
 /***/ })
 /******/ ]);

@@ -68,24 +68,29 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ exports["a"] = add;
+/* harmony export (immutable) */ __webpack_exports__["a"] = add;
 function add(a, b) {
 	return a + b;
 };
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__calculator__ = __webpack_require__(0);
 
+const result = __WEBPACK_IMPORTED_MODULE_0__calculator__["a" /* add */](1, 2);
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__calculator__["a" /* add */](1, 2));
+console.log(3);
+
+
+
+
 
 /***/ })
 /******/ ]);
