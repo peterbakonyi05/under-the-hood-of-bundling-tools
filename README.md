@@ -10,6 +10,7 @@ $ npm i
 ```
 $ npm run build:cjs             // runs src/common-js on CommonJS example
 $ npm run build:cjs:browserify  // runs browserify on CommonJS example
+$ npm run build:cjs:fuse-box    // runs Fuse-Box on CommonJS example
 $ npm run build:cjs:webpack     // runs webpack on CommonJS example
 $ npm run build:es2015:webpack  // runs webpack on ES2015 example
 $ npm run build:es2015:rollup   // runs rollup on ES2015 example
@@ -21,7 +22,7 @@ Before you start, take a moment to see how the project structure looks like:
 
 ```
 .
-├── /bin/                       # Process CLI input and call the bundlers implemented in /src
+├── /bin/                       # Call bundlers with the example input
 ├── /example/                   # Can be used as an input for bundling
 ├── /node_modules/              # 3rd-party libraries and utilities
 ├── /output/                    # Generated output by bundling tools for comparison 
@@ -29,6 +30,7 @@ Before you start, take a moment to see how the project structure looks like:
 │   ├── /common-js/             # Naive CommonJS bundler
 │   ├── /dummy/                 # Dummy examples with tests
 └── package.json                # The list of 3rd party libraries and utilities
+```
 
 ## Debugging
 In case you want to take a deep dive into how some of the tools work.

@@ -1,4 +1,4 @@
+const path = require("path");
 const bundle = require("../src").cjsBundle;
-const args = require("./args");
 
-bundle(args.entry, args.output);
+bundle(path.resolve("example/calculator-cjs/index.js", path.resolve("output/cjs-bundle.js"));

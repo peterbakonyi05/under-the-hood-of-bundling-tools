@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "tape src/**/*.spec.js",
-    "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-bundle.js",
+    "build:cjs": "node bin/cjs-bundle",
     "build:cjs:browserify": "browserify example/calculator-cjs/index.js > output/browserify-cjs-bundle.js",
+    "build:cjs:fuse-box": "node bin/fuse-box-cjs",
     "build:cjs:webpack": "webpack --entry ./example/calculator-cjs/index.js --output-filename ./output/webpack-cjs-bundle.js",
     "build:es2015:webpack": "webpack --entry ./example/calculator-es2015/index.js --output-filename ./output/webpack-es2015-bundle.js",
     "build:es2015:rollup": "rollup example/calculator-es2015/index.js --output output/rollup-es2015-bundle.js --format iife"
@@ -21,12 +22,12 @@
     "escodegen": "^1.8.1",
     "estraverse": "^4.2.0",
     "fs-promise": "^1.0.0",
+    "fuse-box": "^1.3.108",
     "lodash": "^4.17.4",
     "module-deps": "^4.0.8",
     "node-browserify": "^1.0.0",
     "rollup": "^0.41.4",
     "tape": "^4.6.3",
-    "webpack": "^2.2.1",
-    "yargs": "^6.6.0"
+    "webpack": "^2.2.1"
   }
 }
