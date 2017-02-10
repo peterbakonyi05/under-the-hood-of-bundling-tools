@@ -8,7 +8,8 @@
     "build:cjs": "node bin/cjs-bundle -e example/calculator-cjs/index.js -o output/cjs-bundle.js",
     "build:cjs:browserify": "browserify example/calculator-cjs/index.js > output/browserify-cjs-bundle.js",
     "build:cjs:webpack": "webpack --entry ./example/calculator-cjs/index.js --output-filename ./output/webpack-cjs-bundle.js",
-    "build:es2015:webpack": "webpack --entry ./example/calculator-es2015/index.js --output-filename ./output/webpack-es2015-bundle.js"
+    "build:es2015:webpack": "webpack --entry ./example/calculator-es2015/index.js --output-filename ./output/webpack-es2015-bundle.js",
+    "build:es2015:rollup": "rollup example/calculator-es2015/index.js --output output/rollup-es2015-bundle.js --format iife"
   },
   "keywords": [],
   "author": "",

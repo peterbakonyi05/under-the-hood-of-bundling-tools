@@ -12,6 +12,7 @@ $ npm run build:cjs             // runs src/common-js on CommonJS example
 $ npm run build:cjs:browserify  // runs browserify on CommonJS example
 $ npm run build:cjs:webpack     // runs webpack on CommonJS example
 $ npm run build:es2015:webpack  // runs webpack on ES2015 example
+$ npm run build:es2015:rollup   // runs rollup on ES2015 example
 ```
 
 ## Directory Layout
