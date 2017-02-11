@@ -2,14 +2,11 @@
 FuseBox.pkg("default", {}, function(___scope___){
 ___scope___.file("index.js", function(exports, require, module, __filename, __dirname){ 
 
-// index.js
 const calculator = require("./calculator");
-const result = calculator.add(1, 2);
-console.log(result);
+console.log(calculator.add(1, 2));
 });
 ___scope___.file("calculator.js", function(exports, require, module, __filename, __dirname){ 
 
-// calculator.js
 module.exports = {
 	add: function (a, b) {
 		return a + b;

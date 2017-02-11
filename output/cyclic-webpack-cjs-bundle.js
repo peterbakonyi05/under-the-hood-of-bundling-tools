@@ -70,21 +70,22 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-// calculator.js
+let counter = 0;
 module.exports = {
-	add: function (a, b) {
-		return a + b;
-	}
+    counter,
+    inc() {
+        counter++;
+    }
 };
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// index.js
-const calculator = __webpack_require__(0);
-const result = calculator.add(1, 2);
-console.log(result);
+const { inc, counter } = __webpack_require__(0);
+console.log(counter); // 0
+inc();
+console.log(counter); // 1
 
 /***/ })
 /******/ ]);

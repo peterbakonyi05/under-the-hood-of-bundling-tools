@@ -71,10 +71,12 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = add;
-function add(a, b) {
-	return a + b;
-};
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return counter; });
+/* harmony export (immutable) */ __webpack_exports__["b"] = inc;
+    let counter = 0;
+    function inc() {
+        counter++;
+    }
 
 /***/ }),
 /* 1 */
@@ -82,15 +84,11 @@ function add(a, b) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__calculator__ = __webpack_require__(0);
-
-const result = __WEBPACK_IMPORTED_MODULE_0__calculator__["a" /* add */](1, 2);
-
-console.log(3);
-
-
-
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__counter__ = __webpack_require__(0);
+    
+    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]);
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__counter__["b" /* inc */])();
+    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]);
 
 /***/ })
 /******/ ]);
