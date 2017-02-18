@@ -39,7 +39,41 @@ class Bundle {
 }
 ```
 
+## Entities
+
+### Node base class
+* bind scope
+* run `callback`on each child
+* find parent, find scope
+* render (todo: see who is overriding it)
+    * e.g: for `ImportDeclaration` this will be remove
+* run: abstract (todo: check what this does for some subclasses)
+* hasEffects (todo: what does this do?)
+* gatherPossibleValues (todo: what does this do?)
+
+What kind of Nodes do we have?
+* `ExportNamedDeclaration`
+* `FunctionDeclaration`
+* `ReturnStatement` => Same as `Node`
+* `BinaryExpression`
+
+* `ImportDeclaration`
+* `ExpressionStatement` => `CallExpression` => `MemberExpression` inside a `CallExpression`, inside it two `Literal`s
+
+### Scopes
+Base Scope
+
+todo: make sure here that it converst ModuleScope ==> BundleScope, and see where it happens
+
+* BundleScope
+    * todo: `SyntheticGlobalDeclaration`
+* ModuleScope
+    * 
+
 ## Flow
-* `src/rollup`
-    * `rollup()`
-        * 
+* `src/rollup`: very high level, easy
+* Bundle
+* Module
+    * todo: understand `addExports` and `addImports`
+* Declaration
+* ExternalDeclaration

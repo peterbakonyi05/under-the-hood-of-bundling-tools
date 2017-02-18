@@ -12,6 +12,7 @@
 * [ongoing] - understand Rollup
     * debug rollup toroughly
     * go through the code toroughly
+    * display the name of the classes and the workflow first on a simple, then on a more complex example.
 
 ## Intro
 Not focusing on how you get Webpack/Rollup/Browserify to working (there are thousands of good articles, I linked some at the end).

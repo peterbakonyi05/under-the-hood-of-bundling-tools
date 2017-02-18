@@ -13,7 +13,7 @@ module.exports = function convertForBrowser(parsedModules) {
 
 	return `(function (modules, entryIds) {
 	var cache = {};
-	function require(id, dependencies) {
+	function require(id) {
 		if (!cache[id]) {
 			cache[id] = {
 				exports: {}
@@ -21,8 +21,8 @@ module.exports = function convertForBrowser(parsedModules) {
 			modules[id][0].call(
 				cache[id].exports,
 				function (dependency) {
-					var dependencid = modules[id][1][dependency];
-					return require(dependencid);
+					var dependencyId = modules[id][1][dependency];
+					return require(dependencyId);
 				},
 				cache[id],
 				cache[id].exports
