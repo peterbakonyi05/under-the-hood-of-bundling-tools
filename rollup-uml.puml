@@ -1,0 +1,53 @@
+@startuml
+
+package "AST" #DDDDDD {
+class Scope
+Scope : addDeclaration(name, declaration)
+Scope : contains(name)
+Scope : deshadow(names)
+
+ModuleScope <|-- Scope
+
+BundleScope <|-- Scope
+
+class Node
+Node : bind(scope)
+Node : run()
+Node : render()
+
+note left of Node
+  Each type has its own
+  subclass (IfStatement etc.)
+end note
+
+ExportNamedDeclaration <|-- Node
+ExportNamedDeclaration : render(){ transform to var }
+
+ImportDeclaration <|-- Node
+ImportDeclaration : render() { remove node }
+
+}
+
+class Bundle {
+    +build()
+    +render()
+}
+
+class Module {
+    + ast
+    + dependencies
+    + imports
+    + exports
+    + declarations
+
+    + run()
+    + render()
+}
+
+
+Bundle o-- BundleScope: < has
+Module o-- ModuleScope: < has
+Bundle o-- Module: < has many
+Node o-- Module: < has many
+
+@enduml

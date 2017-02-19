@@ -1,0 +1,71 @@
+@startuml
+actor rollup
+
+rollup -> Bundle: create
+note right
+provide entry module
+endnote
+Bundle -> BundleScope: create
+rollup -> Bundle: build
+activate Bundle
+Bundle -> Module: fetch all
+activate Module
+Module -> ModuleScope: create
+activate ModuleScope
+deactivate ModuleScope
+Module -> Node: parse and create all
+activate Node
+deactivate Node
+deactivate Module
+
+Bundle -> Module: bind imports and references
+activate Module
+Module -> Module: link imports
+Module -> Node: bind module scope
+activate Node
+deactivate Node
+deactivate Module
+
+newpage
+Bundle -> Module: run
+activate Module
+Module -> Node: run
+activate Node
+note right
+mark statements that
+should appear in the bundle
+(tree shaking)
+endnote
+deactivate Node
+deactivate Module
+Bundle -> Bundle: sort
+Bundle -> BundleScope: deshadow
+activate BundleScope
+deactivate BundleScope
+deactivate Bundle
+
+newpage
+rollup -> Bundle: render
+activate Bundle
+
+Bundle -> Module: render
+activate Module
+
+Module -> Node: render
+activate Node
+Module <-- Node: return transformed node
+note right
+include if ran
+endnote
+deactivate Node
+
+Bundle <-- Module: result
+deactivate Module
+
+Bundle -> Bundle: finalise by format (iife, cjs)
+
+rollup <-- Bundle: result
+deactivate Bundle
+
+rollup -> rollup: write to file
+@enduml
