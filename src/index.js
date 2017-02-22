@@ -1,3 +1,3 @@
 module.exports = {
-	cjsBundle: require("./common-js/common-js-bundle")
+    cjsBundle: require("./common-js/common-js-bundle")
 };
