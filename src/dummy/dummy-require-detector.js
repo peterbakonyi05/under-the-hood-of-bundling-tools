@@ -1,3 +1,9 @@
+/**
+ * This is a VERY BAD idea. It just shows how messy and fragile
+ * it would be without using AST.
+ * 
+ * Though require.js uses this approach.
+ */
 function dummyRequireDetector(content) {
     const regex = /require\(["'](\.(\/[a-zA-Z0-9\-\.]+)*)["']\)/gi;
     const matches = [];
