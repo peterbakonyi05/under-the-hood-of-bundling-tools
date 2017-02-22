@@ -32,5 +32,5 @@ module.exports = function convertForBrowser(parsedModules) {
         return cache[id].exports;
     }
     entryIds.forEach(require);
-}(${modules}, ${JSON.stringify(entryIds)}))`;
+}(${modules}, ${JSON.stringify(entryIds)}));`;
 }

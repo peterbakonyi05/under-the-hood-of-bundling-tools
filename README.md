@@ -18,6 +18,7 @@ Before you start, take a moment to see how the project structure looks like:
 │   ├── cyclic-es2015             # Cyclic dependency example (shows how ES2015 solves this problem)
 ├── /node_modules/                # 3rd-party libraries and utilities
 ├── /output/                      # Generated output by bundling tools for comparison (naming is logical)
+│    ├── index.html               # Just open in the browser to see the examples running in the browser
 ├── /src/                         # Source code
 │   ├── /common-js/               # Naive CommonJS bundler
 │   ├── /dummy/                   # Dummy examples with tests
