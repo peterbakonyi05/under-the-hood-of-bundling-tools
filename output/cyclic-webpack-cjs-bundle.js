@@ -85,7 +85,7 @@ module.exports = {
 const { inc, counter } = __webpack_require__(0);
 console.log(counter); // 0
 inc();
-console.log(counter); // 1
+console.log(counter); // 0
 
 /***/ })
 /******/ ]);

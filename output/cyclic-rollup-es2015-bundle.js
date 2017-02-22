@@ -6,8 +6,8 @@ let counter = 0;
         counter++;
     }
 
-console.log(counter);
+console.log(counter); // 0
     inc();
-    console.log(counter);
+    console.log(counter); // 1
 
 }());

@@ -86,9 +86,9 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__counter__ = __webpack_require__(0);
     
-    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]);
+    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]); // 0
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__counter__["b" /* inc */])();
-    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]);
+    console.log(__WEBPACK_IMPORTED_MODULE_0__counter__["a" /* counter */]); // 1
 
 /***/ })
 /******/ ]);

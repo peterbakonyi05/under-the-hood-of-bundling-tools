@@ -25,7 +25,7 @@
         };
     },
     2: function (require, module, exports) {
-        const calculator = require("./calculator");
+        const calculator = require(1);
         console.log(calculator.add(1, 2));
     }
 }, [2]));
