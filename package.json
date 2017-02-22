@@ -1,8 +1,7 @@
 {
-  "name": "demystify-bundling",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "under-the-hood-of-bundling-tools",
+  "description": "collection of small examples that helps understanding how bundling tools (Webpack, Rollup, Browserify) work under the hood",
+  "main": "src/index.js",
   "scripts": {
     "test": "tape src/**/*.spec.js",
     "build:calculator:cjs": "node bin/cjs-bundle",
