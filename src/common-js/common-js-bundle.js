@@ -1,9 +1,9 @@
 const fsp = require("fs-promise");
 
-const { getModuleDependencies, convertForBrowser } = require("./util");
+const { getModuleDependencies, generateBundle } = require("./util");
 
 module.exports = function cjsBundle(entry, output) {
     return getModuleDependencies(entry)
-        .then(convertForBrowser)
+        .then(generateBundle)
         .then(data => fsp.writeFile(output, data));
 }

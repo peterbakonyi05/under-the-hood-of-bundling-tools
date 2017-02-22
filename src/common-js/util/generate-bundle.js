@@ -1,6 +1,6 @@
 const _ = require("lodash");
 
-module.exports = function convertForBrowser(parsedModules) {
+module.exports = function generateBundle(parsedModules) {
     const entryIds = [];
     let modules = "{";
     _.forEach(parsedModules, m => {
