@@ -22,6 +22,7 @@ Before you start, take a moment to see how the project structure looks like:
 ├── /src/                         # Source code
 │   ├── /common-js/               # Naive CommonJS bundler
 │   ├── /dummy/                   # Dummy examples with tests
+│       ├── module-dependencies   # Easiest way to get the dependencies of a module
 │       ├── require-detector      # Getting dependencies of a CommonJS module using RegExp
 │       ├── es6-to-cjs-transfor   # Converting ES6 `export` to CommonJS `require` statements
 └── package.json                  # The list of 3rd party libraries and utilities
