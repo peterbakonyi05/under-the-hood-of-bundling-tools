@@ -1,7 +1,12 @@
 # Under the hood of bundling tools
 
 This project is a collection of small examples that helps understanding how bundling tools (Webpack, Rollup, Browserify)
-work under the hood. I created this project part of a presentation I prepared for the MaltaJS meetup group. 
+work under the hood.
+
+I created this project part of a presentation I prepared for the MaltaJS meetup group.
+Presentation:
+* Google Slides: https://docs.google.com/presentation/d/1_XwJUxlVYa3ojEcdbr0Yt6-U0iBpUXCUk4G6yuEHNaQ/edit?usp=sharing
+* PDF: [Download](./docs/Peter_Bakonyi-Under_the_hood_of_bundling_tools.pdf)
 
 ## Directory Layout
 
@@ -10,7 +15,7 @@ Before you start, take a moment to see how the project structure looks like:
 ```
 .
 ├── /bin/                         # Call bundlers with the example input (not important)
-├── /docs/                        # Class and sequence diagram for rollup for better understanding
+├── /docs/                        # Presentaion and some rollup related diagrams
 ├── /example/                     # Can be used as an input for bundling
 │   ├── calculator-cjs            # Basic module example using CommonJS format
 │   ├── calculator-es2015         # Basic module example using ES2015 format
@@ -68,7 +73,7 @@ $ npm run build:cyclic:es2015:rollup   // runs rollup on ES2015 example
 
 ## Debugging Rollup
 
-In case you want to take a deep dive into a bundling tool. Check out the `docs/rollup` folder for some useful diagrams.
+In case you want to take a deep dive into a bundling tool. Check out the [docs/rollup](./docs/rollup) folder for some useful diagrams.
 
 
 ### Setup
